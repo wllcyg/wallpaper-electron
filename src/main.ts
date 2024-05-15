@@ -13,6 +13,7 @@ const createWindow = () => {
       devTools: true,
       preload: path.join(__dirname, 'preload.js'),
     },
+    icon:'path/icon/icon.png'
   });
   desktopCapturer.getSources({ types: ['window', 'screen'] }).then(async sources => {
     for (const source of sources) {
