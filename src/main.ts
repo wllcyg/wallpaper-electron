@@ -1,19 +1,32 @@
 import { app, BrowserWindow, ipcMain, Menu, desktopCapturer, net } from 'electron';
 import path from 'path';
 import 'reflect-metadata'
+import System from '@/ipc/system';
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
   app.quit();
 }
+let mainWindow: BrowserWindow
 const createWindow = () => {
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 1480,
     height: 800,
     webPreferences: {
       devTools: true,
       preload: path.join(__dirname, 'preload.js'),
     },
-    icon:'path/icon/icon.png'
+    // transparent: true,
+    // frame: false,
+    opacity: 0.9,
+    backgroundColor: 'rgb(16,18,27)',
+    icon:'path/icon/icon.png',
+    titleBarStyle: 'hidden',
+    titleBarOverlay: {
+      color: 'rgba(0,0,0,0)',
+      height: 50,
+      symbolColor: 'white'
+    }
+
   });
   desktopCapturer.getSources({ types: ['window', 'screen'] }).then(async sources => {
     for (const source of sources) {
@@ -37,6 +50,7 @@ const createWindow = () => {
 app.on('ready', () => {
   createWindow()
   Menu.setApplicationMenu(null)
+  System(mainWindow)
 });
 
 // Quit when all windows are closed, except on macOS. There, it's common
@@ -46,6 +60,7 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
+
 });
 
 app.on('activate', () => {

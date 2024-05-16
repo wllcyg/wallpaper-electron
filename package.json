@@ -43,6 +43,7 @@
     "@reduxjs/toolkit": "^2.2.3",
     "ali-oss": "^6.20.0",
     "axios": "^1.6.8",
+    "classnames": "^2.5.1",
     "dayjs": "^1.11.10",
     "electron-squirrel-startup": "^1.0.0",
     "eslint-plugin-react": "^7.34.1",

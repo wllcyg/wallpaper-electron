@@ -22,13 +22,9 @@ declare global {
     VITE_NAME: `${string}_VITE_NAME`;
   }
   interface Window {
-    db: any,
-    system: any,
-    OSS: {
-      clientOss: (value) => Promise<any>,
-      checkOssStatus: () => Promise<any>,
-      getImage: (value:fetchType) => Promise<any>
-    }
+    system: {
+      changeTheme:(value) => void
+    },
   }
 }
 

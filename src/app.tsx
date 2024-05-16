@@ -1,4 +1,10 @@
-import * as ReactDOM from "react-dom/client";
-import React from "react";
-import "./index.css";
-ReactDOM.createRoot(document.getElementById("app")).render(<div>1</div>);
+import * as ReactDOM from 'react-dom/client';
+import React, { Suspense } from 'react';
+import './index.css';
+import router from '@/render/router';
+import { RouterProvider } from 'react-router-dom'
+ReactDOM.createRoot(document.getElementById('app')).render(
+  <Suspense>
+    <RouterProvider router={router}/>
+  </Suspense>
+);
