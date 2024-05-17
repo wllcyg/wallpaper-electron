@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, Menu, desktopCapturer, net } from 'electron';
+import { app, BrowserWindow, ipcMain, Menu, desktopCapturer, net, nativeTheme } from 'electron';
 import path from 'path';
 import 'reflect-metadata'
 import System from '@/ipc/system';
@@ -15,10 +15,8 @@ const createWindow = () => {
       devTools: true,
       preload: path.join(__dirname, 'preload.js'),
     },
-    // transparent: true,
-    // frame: false,
+    frame: false,
     opacity: 0.9,
-    backgroundColor: 'rgb(16,18,27)',
     icon:'path/icon/icon.png',
     titleBarStyle: 'hidden',
     titleBarOverlay: {

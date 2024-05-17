@@ -9,11 +9,12 @@ const Main = () => {
   const [theme, setTheme] = useState('dark-mode');
   const changeTheme = (value:string):void =>{
     setTheme(value)
-    window.system.changeTheme(value)
+    const ipcTheme = value === 'dark-mode' ? '#fff' : '#000'
+    window.system.changeTheme(ipcTheme)
   }
   return (
     <MainContainer>
-      <div className={classNames([theme])}>
+      <div className={classNames([theme,'app-wrapper'])}>
         <Header />
         <div className="inner">
           <SliderBar />

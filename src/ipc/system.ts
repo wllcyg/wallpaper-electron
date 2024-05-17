@@ -1,7 +1,10 @@
 import { ipcMain, BrowserWindow } from 'electron';
 
 export default function System(mainWindow:BrowserWindow) {
-  ipcMain.handle('change-theme', (_, value) => {
-    console.log('111',mainWindow);
+  ipcMain.on('change-theme', (_, value) => {
+    mainWindow.setTitleBarOverlay({
+      color: 'rgba(0,0,0,0)',
+      height: 50,
+      symbolColor: value})
   });
 }
